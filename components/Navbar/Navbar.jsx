@@ -1,22 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "./../../public/assets/images/logo.png";
 import Image from "next/image";
+import { AiOutlineSearch } from "react-icons/ai";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
 
 const Navbar = () => {
+  const [search, setSearch] = useState(false);
   return (
-    <nav className="md:h-36 shadow-sm">
-      <div className="max-w-6xl 2xl:max-w-7xl m-auto h-full py-2">
-        <div className="flex items-center justify-between h-1/2">
-          <Image src={logo} sizes="30vw" alt="logo" className="w-24 h-8" />
-          <div>
-            <img
-              alt=""
-              className="w-12 h-12 rounded-full"
-              src="https://source.unsplash.com/40x40/?portrait?1"
-            />
-          </div>
-        </div>
-        <div className="flex items-center justify-center h-1/2 text-sm">
+    <section className="">
+      <div
+        className={`max-w-6xl 2xl:max-w-7xl m-auto ${
+          search ? "block" : "absolute -top-80"
+        } py-5 transition-all duration-300`}
+      >
+        <div className="flex items-center justify-center h-1/2 text-sm space-x-4">
           <form className="h-full flex items-center border rounded-full pr-3">
             <label
               htmlFor="keyword"
@@ -93,9 +96,125 @@ const Navbar = () => {
               />
             </div>
           </form>
+          <div className="">
+            <button onClick={() => setSearch(!search)}>X</button>
+          </div>
         </div>
       </div>
-    </nav>
+      <nav className={`border-b ${search ? "hidden" : "block"} h-[80px]`}>
+        <div className="max-w-6xl 2xl:max-w-7xl m-auto py-2 h-[80px]">
+          <div className="flex items-center justify-between h-full">
+            <Image src={logo} sizes="30vw" alt="logo" className="w-auto h-14" />
+            <div className="h-full flex items-center">
+              <div onClick={() => setSearch(!search)} className={`border hover:shadow-md transition-all cursor-pointer rounded-full flex items-center justify-between space-x-3 px-5 py-2 ${search && "absolute -top-28"} transition-all delay-300`}>
+                <div className="px-3 relative after:h-2/3 after:bg-gray-400 after:w-[1px] after:absolute after:right-0 after:top-2/4 after:-translate-y-2/4">
+                  <p>Anywhere</p>
+                </div>
+                <div className="px-3 relative after:h-2/3 after:bg-gray-400 after:w-[1px] after:absolute after:right-0 after:top-2/4 after:-translate-y-2/4">
+                  <p>Any Week</p>
+                </div>
+                <div className="px-3 relative after:h-2/3 after:bg-gray-400 after:w-[1px] after:absolute after:right-0 after:top-2/4 after:-translate-y-2/4">
+                  <p>Add Guests</p>
+                </div>
+                <div className="px-3">
+                  <p className="bg-red-500 p-2 rounded-full">
+                    <AiOutlineSearch className="text-xl" />
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <img
+                alt=""
+                className="w-12 h-12 rounded-full"
+                src="https://source.unsplash.com/40x40/?portrait?1"
+              />
+            </div>
+          </div>
+        </div>
+      </nav>
+      <section>
+        <div className="max-w-6xl 2xl:max-w-7xl mx-auto py-3">
+          <Swiper
+            slidesPerView={2}
+            spaceBetween={5}
+            breakpoints={{
+              640: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 4,
+                spaceBetween: 40,
+              },
+              1024: {
+                slidesPerView: 5,
+                spaceBetween: 50,
+              },
+            }}
+            modules={[Pagination]}
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              <Image
+                src={logo}
+                sizes="10vw"
+                alt="logo"
+                className="w-auto h-12"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image
+                src={logo}
+                sizes="10vw"
+                alt="logo"
+                className="w-auto h-12"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image
+                src={logo}
+                sizes="10vw"
+                alt="logo"
+                className="w-auto h-12"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image
+                src={logo}
+                sizes="10vw"
+                alt="logo"
+                className="w-auto h-12"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image
+                src={logo}
+                sizes="10vw"
+                alt="logo"
+                className="w-auto h-12"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image
+                src={logo}
+                sizes="10vw"
+                alt="logo"
+                className="w-auto h-12"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image
+                src={logo}
+                sizes="10vw"
+                alt="logo"
+                className="w-auto h-12"
+              />
+            </SwiperSlide>
+          </Swiper>
+        </div>
+      </section>
+    </section>
   );
 };
 
