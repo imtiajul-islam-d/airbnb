@@ -1,8 +1,6 @@
 import React from 'react';
 
-const Home = () => {
-    const data = fetch("https://jsonplaceholder.typicode.com/users");
-    
+const Home = () => { 
     return (
         <section>
             This is home
