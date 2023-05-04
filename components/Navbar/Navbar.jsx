@@ -13,27 +13,27 @@ import "swiper/css/pagination";
 const Navbar = () => {
   const [search, setSearch] = useState(false);
   return (
-    <section className="">
+    <section className="font-fira">
       <div
-        className={`max-w-6xl 2xl:max-w-7xl m-auto ${
-          search ? "block" : "absolute -top-80"
-        } py-5 transition-all duration-300`}
+        className={`flex items-center h-[100px] ${
+          search ? "absolute w-full top-0" : "lg:absolute w-full lg:-top-32"
+        } transition-all`}
       >
-        <div className="flex items-center justify-center h-1/2 text-sm space-x-4">
-          <form className="h-full flex items-center border rounded-full pr-3">
+        <div className="max-w-6xl 2xl:max-w-7xl m-auto flex items-center justify-center text-sm space-x-4">
+          <form className="h-full flex flex-col lg:flex-row items-center border rounded-full pr-3">
             <label
-              htmlFor="keyword"
-              className="group transition-all after:transition-all relative hover:after:h-0 after:h-2/3 after:bg-gray-400 after:w-[1px] after:absolute after:right-0 after:top-2/4 after:-translate-y-2/4 h-full flex flex-col items-center"
+              htmlFor="checkOut"
+              className="group transition-all after:transition-all relative hover:after:h-0 after:h-2/3 after:bg-gray-400 after:w-[1px] after:absolute after:right-0 after:top-2/4 after:-translate-y-2/4"
             >
-              <div className="group group-hover:bg-gray-200 transition-all h-full px-5 rounded-full flex flex-col justify-center">
-                <label className="w-full px-2" htmlFor="keyword">
+              <div className="group group-hover:bg-gray-200 transition-all h-full px-5 rounded-full flex flex-col justify-center hover:bg-gray-300 hover:rounded-full items-center overflow-hidden py-2">
+                <label className="w-full px-2" htmlFor="checkOut">
                   Where
                 </label>
                 <input
-                  className="rounded-full group-hover:bg-gray-200 transition-all outline-none w-full py-1 px-2"
+                  className="rounded-full group-hover:bg-gray-200 transition-all outline-none py-1 px-2"
                   type="text"
-                  name="keyword"
-                  id="keyword"
+                  name="checkOut"
+                  id="checkOut"
                   placeholder="Search Destination"
                 />
               </div>
@@ -86,7 +86,7 @@ const Navbar = () => {
               </div>
             </label>
 
-            <div className="px-3 py-3 border rounded-full hover:bg-gray-200">
+            <div className="px-3 py-3 border rounded-full hover:bg-red-500 hover:text-white">
               <input
                 className=""
                 type="submit"
@@ -101,12 +101,21 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <nav className={`border-b ${search ? "hidden" : "block"} h-[80px]`}>
-        <div className="max-w-6xl 2xl:max-w-7xl m-auto py-2 h-[80px]">
+      <nav
+        className={`transition-all  ${
+          search ? "absolute w-full -top-32" : " absolute w-full top-0"
+        } h-[100px]`}
+      >
+        <div className="max-w-6xl 2xl:max-w-7xl m-auto py-2 h-full">
           <div className="flex items-center justify-between h-full">
             <Image src={logo} sizes="30vw" alt="logo" className="w-auto h-14" />
             <div className="h-full flex items-center">
-              <div onClick={() => setSearch(!search)} className={`border hover:shadow-md transition-all cursor-pointer rounded-full flex items-center justify-between space-x-3 px-5 py-2 ${search && "absolute -top-28"} transition-all delay-300`}>
+              <div
+                onClick={() => setSearch(!search)}
+                className={`border hover:shadow-md transition-all cursor-pointer rounded-full flex items-center justify-between space-x-3 px-5 py-2 ${
+                  search && "absolute -top-28"
+                } transition-all delay-300`}
+              >
                 <div className="px-3 relative after:h-2/3 after:bg-gray-400 after:w-[1px] after:absolute after:right-0 after:top-2/4 after:-translate-y-2/4">
                   <p>Anywhere</p>
                 </div>
@@ -133,7 +142,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      <section>
+      <section className="mt-[100px] border-t">
         <div className="max-w-6xl 2xl:max-w-7xl mx-auto py-3">
           <Swiper
             slidesPerView={2}
